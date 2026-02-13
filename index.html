@@ -1,169 +1,226 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>빛청모 긴급모금 🌈</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>빛청모 긴급모금 🌈</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-      color: white;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  color: white;
+  text-align: center;
+  background: black;
+  overflow-x: hidden;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 80px 20px;
-    }
+/* 🌈 애니메이션 배경 */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    red, orange, yellow, green, blue, indigo, violet,
+    red, orange, yellow, green, blue, indigo, violet
+  );
+  animation: rainbowMove 20s linear infinite;
+  opacity: 0.15;
+  z-index: -1;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+@keyframes rainbowMove {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-    .subtitle {
-      font-size: 20px;
-      opacity: 0.8;
-      margin-bottom: 50px;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+}
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 30px 0;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    }
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    h2 {
-      font-size: 26px;
-      margin-bottom: 20px;
-    }
+.subtitle {
+  font-size: 20px;
+  opacity: 0.85;
+  margin-bottom: 50px;
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.7;
-      opacity: 0.9;
-    }
+.card {
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  margin: 30px 0;
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
+}
 
-    .goal {
-      font-size: 20px;
-      color: #ffd700;
-      margin-top: 20px;
-      font-weight: bold;
-    }
+h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
 
-    .progress-bar {
-      background: #333;
-      border-radius: 50px;
-      overflow: hidden;
-      margin-top: 20px;
-      height: 20px;
-    }
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
 
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      transition: width 1s ease;
-    }
+.goal {
+  font-size: 20px;
+  color: #ffd700;
+  margin-top: 20px;
+  font-weight: bold;
+}
 
-    .account {
-      font-size: 22px;
-      font-weight: bold;
-      color: #00ffcc;
-      margin-top: 10px;
-    }
+.progress-bar {
+  background: #333;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 20px;
+  height: 22px;
+}
 
-    .contact {
-      font-size: 18px;
-      line-height: 1.8;
-    }
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  transition: width 1s ease;
+}
 
-    footer {
-      margin-top: 80px;
-      font-size: 14px;
-      opacity: 0.5;
-    }
+.progress-text {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.8;
+}
 
-    @media (max-width: 600px) {
-      h1 { font-size: 34px; }
-      p { font-size: 16px; }
-    }
-  </style>
+.account {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00ffcc;
+  margin-top: 10px;
+}
+
+.copy-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  color: black;
+}
+
+.contact {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+footer {
+  margin-top: 80px;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 34px; }
+  p { font-size: 16px; }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>🌈 빛청모 긴급모금 🌈</h1>
-    <div class="subtitle">
-      청소년 성소수자의 안전과 존엄을 지키기 위한 긴급 모금 캠페인
-    </div>
+<h1>🌈 빛청모 긴급모금 🌈</h1>
+<div class="subtitle">
+청소년 성소수자의 안전과 존엄을 지키기 위한 긴급 모금 캠페인
+</div>
 
-    <div class="card">
-      <h2>📌 모금 목적</h2>
-      <p>
-        • 청소년 성소수자 긴급지원<br>
-        • 서울퀴어문화축제 분담금 모금
-      </p>
-      <div class="goal">
-        🎯 총 목표 금액: 750,000원
-      </div>
+<div class="card">
+<h2>📌 모금 목적</h2>
+<p>
+• 청소년 성소수자 긴급지원<br>
+• 서울퀴어문화축제 분담금 모금
+</p>
 
-      <div class="progress-bar">
-        <div class="progress" id="progress"></div>
-      </div>
-      <p style="font-size:14px; opacity:0.6;">※ 현재 모금액에 따라 진행률을 업데이트할 수 있습니다.</p>
-    </div>
+<div class="goal">
+🎯 목표 금액: 750,000원
+</div>
 
-    <div class="card">
-      <h2>💳 후원 계좌 안내</h2>
-      <p>하나은행</p>
-      <div class="account">
-        704-910027-27904
-      </div>
-    </div>
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
 
-    <div class="card">
-      <h2>📞 연락처</h2>
-      <div class="contact">
-        공식 사무국: 070-7953-8302<br>
-        대표 서영: 010-4930-5488
-      </div>
-    </div>
+<div class="progress-text">
+현재 모금액: <span id="currentDisplay"></span>원<br>
+달성률: <span id="percentDisplay"></span>%
+</div>
+</div>
 
-    <div class="card">
-      <h2>💜 여러분의 연대가 희망입니다</h2>
-      <p>
-        작은 후원이 위기 상황에 놓인 청소년에게는 큰 힘이 됩니다.<br>
-        안전한 사회를 위한 연대에 함께해주세요 🌈
-      </p>
-    </div>
+<div class="card">
+<h2>💳 후원 계좌 안내</h2>
+<p>하나은행</p>
+<div class="account" id="accountNumber">
+704-910027-27904
+</div>
+<button class="copy-btn" onclick="copyAccount()">계좌번호 복사</button>
+</div>
 
-    <footer>
-      © 빛청모 | 긴급모금 캠페인
-    </footer>
+<div class="card">
+<h2>📞 연락처</h2>
+<div class="contact">
+공식 사무국: 070-7953-8302<br>
+대표 서영: 010-4930-5488
+</div>
+</div>
 
-  </div>
+<div class="card">
+<h2>💜 여러분의 연대가 희망입니다</h2>
+<p>
+작은 후원이 위기 상황에 놓인 청소년에게는 큰 힘이 됩니다.<br>
+안전한 사회를 위한 연대에 함께해주세요 🌈
+</p>
+</div>
 
-  <script>
-    // 현재 모금액을 여기에 입력하면 자동으로 퍼센트 계산
-    const currentAmount = 62360; // ← 여기에 현재 모금액 입력
-    const goalAmount = 750000;
+<footer>
+© 빛청모 | 긴급모금 캠페인
+</footer>
 
-    const percent = (currentAmount / goalAmount) * 100;
-    document.getElementById("progress").style.width = percent + "%";
-  </script>
+</div>
+
+<script>
+// 🔥 현재 모금액만 수정하면 자동 계산됨
+const currentAmount = 62360; // ← 여기 숫자만 바꾸면 됨
+const goalAmount = 750000;
+
+const percent = ((currentAmount / goalAmount) * 100).toFixed(1);
+
+document.getElementById("progress").style.width = percent + "%";
+document.getElementById("currentDisplay").innerText = currentAmount.toLocaleString();
+document.getElementById("percentDisplay").innerText = percent;
+
+// 계좌 복사 기능
+function copyAccount() {
+  const text = document.getElementById("accountNumber").innerText;
+  navigator.clipboard.writeText(text);
+  alert("계좌번호가 복사되었습니다.");
+}
+</script>
 
 </body>
 </html>
