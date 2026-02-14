@@ -1,1 +1,106 @@
-
+body {
+    margin: 0;
+    font-family: 'Apple SD Gothic Neo', sans-serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  
+  /* 🌈 배경 애니메이션 */
+  body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+      red, orange, yellow, green, blue, indigo, violet, red);
+    animation: rainbowMove 15s linear infinite;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  
+  @keyframes rainbowMove {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(-50%, -50%); }
+  }
+  
+  nav {
+    padding: 15px;
+    background: rgba(0,0,0,0.6);
+  }
+  
+  nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .section {
+    background: rgba(0,0,0,0.6);
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+  }
+  
+  .home-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg,
+      red, orange, yellow, green, blue, indigo, violet);
+    background-size: 300% 300%;
+    animation: rainbowButton 5s ease infinite;
+  }
+  
+  @keyframes rainbowButton {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .amount {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .copy-btn {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* 🔥 이유 애니메이션 영역 */
+  .reason-section {
+    margin: 80px auto;
+    max-width: 900px;
+  }
+  
+  .reason-section h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+  }
+  
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+    font-size: 1.3em;
+    margin: 20px 0;
+  }
+  
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .delay1 { transition-delay: 0.3s; }
+  .delay2 { transition-delay: 0.6s; }
+  
