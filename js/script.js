@@ -21,7 +21,7 @@
   /* ===== 모금액 애니메이션 (easing 적용) ===== */
   const amountEl = document.getElementById('currentAmount');
   const progressFill = document.getElementById('progressFill');
-  const target = 235000;
+  const target = 63250;
   const goalAmount = 750000;
   const duration = 2500;
   const startTime = performance.now();
