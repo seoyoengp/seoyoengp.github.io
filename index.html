@@ -3,106 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌈 빛청모 긴급모금</title>
+<title>빛청모 긴급모금</title>
 
-<!-- CSS 연결 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<style>
+  :root {
+    --bg-color: #050816;
+    --card-bg: rgba(15, 23, 42, 0.85);
+    --card-border: rgba(148, 163, 184, 0.25);
+    --accent: #38bdf8;
+    --accent-soft: rgba(56, 189, 248, 0.12);
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
+    color: var(--text-main);
+    text-align: center;
+    overflow-x: hidden;
+    background: radial-gradient(circle at top, #0b1120 0, #020617 45%, #000 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 은은한 배경 그라데이션 오버레이 */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.14), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(244, 114, 182, 0.12), transparent 55%);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* 상단 메뉴 */
+  nav {
+    width: 100%;
+    max-width: 960px;
+    padding: 18px 24px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    background: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(18px);
+  }
+
+  nav::before {
+    content: "";
+    position: absolute;
+    inset: 0 24px auto;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.35), transparent);
+    pointer-events: none;
+  }
+
+  nav a {
+    position: relative;
+    margin: 0;
+    padding: 4px 0;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), #f97316);
+    transition: width 0.2s ease;
+  }
+
+  nav a:hover {
+    color: var(--text-main);
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 4vw, 2.7rem);
+    margin: 60px 16px 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  h1 span {
+    display: inline-block;
+    background: linear-gradient(120deg, #38bdf8, #a855f7, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 기존 텍스트는 그대로 두고, 이 h1 자체에만 여백/색상 조정 */
+  h1 {
+    color: var(--text-main);
+  }
+
+  .subtitle {
+    margin: 0 16px 28px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* 홈페이지 버튼 */
+  .home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--text-main);
+    background: radial-gradient(circle at 0 0, var(--accent-soft), transparent 65%),
+      linear-gradient(135deg, #0f172a, #020617);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow:
+      0 18px 40px rgba(15, 23, 42, 0.95),
+      0 0 0 1px rgba(148, 163, 184, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease,
+      background 0.2s ease;
+  }
+
+  .home-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(148, 163, 184, 0.65);
+    box-shadow:
+      0 20px 45px rgba(15, 23, 42, 1),
+      0 0 0 1px rgba(148, 163, 184, 0.55);
+  }
+
+  .section {
+    background: var(--card-bg);
+    margin: 28px auto 20px;
+    padding: 26px 22px 24px;
+    border-radius: 18px;
+    width: 90%;
+    max-width: 720px;
+    border: 1px solid var(--card-border);
+    box-shadow:
+      0 22px 45px rgba(15, 23, 42, 0.9),
+      0 0 0 1px rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(18px);
+  }
+
+  .section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .section p {
+    margin: 6px 0 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+  }
+
+  .section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .section strong {
+    font-weight: 600;
+  }
+
+  .copy-btn {
+    margin-left: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.8rem;
+    background: rgba(15, 23, 42, 0.9);
+    color: var(--text-main);
+    transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
+  }
+
+  .copy-btn:hover {
+    background: rgba(15, 23, 42, 1);
+    border-color: rgba(148, 163, 184, 0.7);
+    transform: translateY(-0.5px);
+  }
+
+  .amount {
+    font-size: 2.1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-top: 8px;
+  }
+
+  .amount::before {
+    content: "₩";
+    margin-right: 4px;
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      justify-content: center;
+      padding-inline: 16px;
+      gap: 12px;
+    }
+
+    nav::before {
+      inset-inline: 16px;
+    }
+
+    .section {
+      padding-inline: 18px;
+    }
+  }
+</style>
 </head>
 
 <body>
 
-<!-- 🔹 상단 네비게이션 -->
-<nav class="nav-glass">
+<nav>
   <a href="#home">홈</a>
-  <a href="#donate">후원</a>
-  <a href="#reason">후원 이유</a>
+  <a href="#donate">후원 방법</a>
   <a href="#contact">연락처</a>
 </nav>
 
-<!-- 🔹 메인 타이틀 -->
-<header id="home" class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">
-      <span class="hero-emoji">🌈</span>
-      빛청모 긴급모금
-      <span class="hero-emoji">🌈</span>
-    </h1>
-    <a href="https://www.bichcheongmo.org" target="_blank" class="home-btn">
-      빛청모 홈페이지 바로가기
-    </a>
-  </div>
-</header>
+<h1>🌈 빛청모 긴급모금 🌈</h1>
 
-<!-- 🔹 후원 영역 -->
-<section class="section section-glass" id="donate">
+<!-- 🌈 홈페이지 연결 버튼 -->
+<a href="https://www.bichcheongmo.org" target="_blank" class="home-btn">
+  🌈 빛청모 홈페이지 바로가기
+</a>
 
-  <h2 class="section-title">
-    <span class="section-icon">🏦</span> 후원 계좌
-  </h2>
-  <div class="account-box">
-    <p class="account-info">하나은행</p>
-    <p class="account-number">
-      <strong id="account">704-910027-27904</strong>
-      <button class="copy-btn" onclick="copyAccount()" aria-label="계좌번호 복사">
-        <span class="copy-text">복사</span>
-        <span class="copy-check">✓</span>
-      </button>
-    </p>
-  </div>
+<div class="section" id="donate">
+  <h2>💜 모금 목적</h2>
+  <p>
+    청소년 성소수자 긴급지원 및<br>
+    서울퀴어문화축제 분담금 모금
+  </p>
+  <p>🎯 목표 금액: <strong>750,000원</strong></p>
 
-  <h2 class="section-title">
-    <span class="section-icon">📊</span> 현재 모금액
-  </h2>
-  <div class="amount-box">
-    <div class="amount" id="currentAmount">0원</div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-    <p class="goal">목표 금액: 750,000원</p>
-  </div>
+  <h2>🏦 후원 계좌</h2>
+  <p>
+    하나은행<br>
+    <strong id="account">704-910027-27904</strong>
+    <button class="copy-btn" onclick="copyAccount()">복사</button>
+  </p>
 
-</section>
+  <h2>📊 현재 모금액</h2>
+  <div class="amount" id="currentAmount">0원</div>
+</div>
 
-<!-- 🔥 왜 후원이 필요한가요 애니메이션 영역 -->
-<section class="reason-section" id="reason">
+<div class="section" id="contact">
+  <h2>📞 연락처</h2>
+  <p>공식 사무국 : 070-7953-8302</p>
+  <p>대표 서영 : 010-4930-5488</p>
+</div>
 
-  <h2 class="fade-up main-question" data-delay="0">
-    왜 후원이 필요한가요?
-  </h2>
+<script>
+function copyAccount() {
+  const text = document.getElementById("account").innerText;
+  navigator.clipboard.writeText(text);
+  alert("계좌번호가 복사되었습니다.");
+}
 
-  <div class="reason-cards">
-    <p class="fade-up reason-card" data-delay="1">
-      위기 상황에 놓인 청소년 성소수자들에게<br>
-      <strong>긴급 생계 · 주거 · 의료 지원</strong>이 필요합니다.
-    </p>
-    <p class="fade-up reason-card" data-delay="2">
-      서울퀴어문화축제 분담금 마련을 통해<br>
-      청소년 성소수자의 <strong>안전한 참여와 목소리</strong>를 지켜내고자 합니다.
-    </p>
-  </div>
+/* 실시간 숫자 증가 효과 (데모용) */
+let current = 0;
+let target = 63250; // 여기 숫자 바꾸면 됨
 
-</section>
-
-<!-- 🔹 연락처 -->
-<section class="section section-glass" id="contact">
-
-  <h2 class="section-title">
-    <span class="section-icon">📞</span> 연락처
-  </h2>
-
-  <div class="contact-list">
-    <p class="contact-item">공식 사무국: <strong>070-7953-8302</strong></p>
-    <p class="contact-item">대표 서영: <strong>010-4930-5488</strong></p>
-  </div>
-
-</section>
-
-<!-- JS 연결 -->
-<script src="script.js"></script>
+function updateAmount() {
+  if (current < target) {
+    current += 5000;
+    document.getElementById("currentAmount").innerText =
+      current.toLocaleString() + "원";
+    setTimeout(updateAmount, 50);
+  }
+}
+updateAmount();
+</script>
 
 </body>
 </html>
-
