@@ -23,7 +23,7 @@
   const progressFill = document.getElementById('progressFill');
   const target = 340360;
   const goalAmount = 750000;
-  const duration = 2500;
+  const duration = 5000;
   const startTime = performance.now();
 
   function easeOutExpo(t) {
